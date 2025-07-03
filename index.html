@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo de CPF</title>
+    <link rel="stylesheet" href="protocolo.css">
+</head>
+<body>
+    <section class="pro">
+    <header class="navbar">
+    <nav>
+        <label for="atendenteInput" style="color: white; font-weight: bold;">Nome do Atendente:</label>
+        <input type="text" id="atendenteInput" placeholder="Digite o nome" />
+        <button id="baixarPDF">Baixar PDF</button>
+    </nav>
+    </header>
+
+    <div class="container" id="protocologeral">
+        <!-- Protocolo Gerado -->
+        <div id="protocolo">
+            <header>
+                <div class="topo">
+                    <div class="logo" id="mf">
+                        <img src="img/image.png" alt="Brasão do Ministério da Fazenda">
+                    </div>
+                    <div class="logo" id="rf">
+                        <img src="img/logoReceitaFederal.png" alt="Logo da Receita Federal">
+                    </div>
+                </div>
+    
+                <div class="titulo">
+                    <h4>Atendimento Presencial Avançado – APA – 1ª Região Fiscal</h4>
+                    <label for="tipoCpf"><strong>Protocolo de CPF:</strong></label>
+                    <select id="tipoCpf" name="tipoCpf">
+                        <option value="">-- Selecione uma opção --</option>
+                        <option value="alteracao-sexo-nome">Alteração de sexo e nome</option>
+                        <option value="estrangeiro-brasil">Estrangeiro residente no Brasil</option>
+                        <option value="estrangeiro-exterior">Estrangeiro residente no exterior</option>
+                        <option value="falecido">Falecido</option>
+                        <option value="maior-16">Maior de 16 anos</option>
+                        <option value="maior-16-nao-assina">Maior de 16 anos – não assina</option>
+                        <option value="menor-16">Menor de 16 anos</option>
+                    </select>
+
+                    <div class="data">
+                        <h5><strong>UNIDADE DE ATENDIMENTO </strong> APA/ARF/RIO VERDE - ARF - RIO VERDE/GO </h5>
+                        <h5><strong> Atendimento realizado em </strong> <time id="dataAtual"></time></h5>
+                    </div>
+                </div>
+            </header>
+    
+            <fieldset class="processo">
+                <legend>Número do Processo:</legend> 
+                <p>
+                    <input type="text" id="protocolo-processo" name="protocolo-processo" placeholder="Número do processo">
+                </p>
+            </fieldset>
+    
+            <fieldset class="servico">
+                <legend>Serviço Requerido:</legend>
+                <div>
+                    <label for="inscricao">Inscrição no CPF</label>
+                    <input type="radio" name="servico" value="inscricao" id="inscricao">
+                    </div>
+                    <div>
+                    <label for="alteracao">Alteração e regularização de CPF</label>
+                    <input type="radio" name="servico" value="alteracao" id="alteracao">
+                    </div>
+
+            </fieldset>
+    
+            <fieldset class="dados">
+                <legend>Informações do Contribuinte:</legend>
+                <div>
+                    <div id="campo-cpf-contribuinte">
+                        <label><strong>CPF:</strong> <span id="protocolo-cpf" contenteditable="true"></span></label>
+                    </div>
+                    <label><strong>Nome:</strong> <span id="protocolo-nome" contenteditable="true"></span></label>
+                    <label><strong>Nome da Mãe:</strong> <span id="protocolo-mae" contenteditable="true"></span></label>
+                </div>
+                <div>
+                    <label><strong>Telefone:</strong> <span id="protocolo-telefone" contenteditable="true"></span></label>
+                    <label><strong>E-mail:</strong> <span id="protocolo-email" contenteditable="true"></span></label>
+                    
+                </div>
+                <div>
+                    <label><strong>CPF do Responsavel:</strong> <span id="protocolo-cpf" contenteditable="true"></span></label>
+                    <label><strong>Nomedo Responsavel:</strong> <span id="protocolo-nome-responsavel" contenteditable="true"></span></label>
+                </div>
+                
+            </fieldset>
+            
+            <fieldset class="itens">
+                <legend>Itens para alterar:</legend>
+                <div class="checkbox-group">
+                    <label><input type="checkbox"> Nome</label>
+                    <label><input type="checkbox"> Sexo</label>
+                    <label><input type="checkbox"> Data de Nascimento</label>
+                    <label><input type="checkbox"> Naturalidade</label>
+                    <label><input type="checkbox"> Nome da Mãe</label>
+                    <label><input type="checkbox"> Título de eleitor</label>
+                    <label><input type="checkbox"> Endereço</label>
+                </div>
+            </fieldset>
+    
+            <fieldset class="documentos">
+                <legend>Documentação obrigatória para realização do serviço:</legend>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" class=".checkbox"> Documento de identidade com foto do interessado</label>
+                    <label><input type="checkbox" class=".checkbox"> Certidão de Casamento ou Certidão de Nascimento (Caso o documento de identidade não esteja atualizado)</label>
+                    <label><input type="checkbox" class=".checkbox"> Documento que comprove a legitimidade do representante legal/procurador (se for o caso)</label>
+                    <label><input type="checkbox" class=".checkbox"> Documento de identificação com foto da pessoa que comparece ao atendimento (o próprio interessado, representante legal/procurador, se for o caso) que permita identificação e conferência de assinatura</label>
+                    <label><input type="checkbox" class=".checkbox"> Título de eleitor (obrigatório entre 18 e 70 anos)</label>
+                    <label><input type="checkbox" class=".checkbox"> Protocolo de atendimento fornecido pelo Banco do Brasil, Correios ou Caixa Econômica ou Protocolo de Atendimento gerado pela Internet, se possuir</label>
+                    <label><input type="checkbox" class=".checkbox"> Comprovante ou informação do endereço</label>
+                </div>
+                
+            </fieldset>
+    
+            <fieldset class="endereco">
+                <legend>Endereço:</legend>
+
+                <label for="cep"><strong>CEP:</strong>
+                    <input type="text" id="cep" maxlength="9" placeholder="Digite o CEP">
+                </label>
+
+                <label for="municipio"><strong>Município:</strong>
+                    <input type="text" id="municipio" placeholder="Município">
+                </label>
+
+                <label for="uf"><strong>UF:</strong>
+                    <input type="text" id="uf" placeholder="UF" maxlength="2">
+                </label>
+
+                <label for="logradouro"><strong>Logradouro:</strong>
+                    <input type="text" id="logradouro" placeholder="Logradouro">
+                </label>
+
+                <label for="bairro"><strong>Bairro:</strong>
+                    <input type="text" id="bairro" placeholder="Bairro">
+                </label>
+            </fieldset>
+    
+            <section class="atendente">
+                <div>
+                    <div class="assinatura-box"></div>
+                </div>
+                <p class="nome"><strong><span id="nomeAtendenteExibido">Servidor</span></strong></p>
+            </section>
+    
+            <section class="assinatura">
+                <div>
+                    <p>Autorizo a solicitação de outros documentos / informações e o envio de resposta desta demanda através do e-mail atendimentorfb.apa.01@rfb.gov.br. Caso seja informado contato telefônico ou de e-mail inválidos, não será possível efetuar o retorno da sua solicitação.</p>
+                </div>
+                <div class="assinatura-box"></div>
+                <p class="nome"><strong><span id="assinatura-nome">Contribuinte ou responsável</span></strong></p>
+            </section>
+    
+            <section class="rodape">
+                <p>Não serão enviados links nem documentos por WhatsApp. Utilize os links abaixo para verificar a conclusão de sua solicitação.</p>
+                <p><strong>NÃO É NECESSÁRIO O COMPARECIMENTO A UMA UNIDADE DE ATENDIMENTO DA RECEITA FEDERAL.</strong></p>
+                <div>
+                    <p>Para consultar ou imprimir o comprovante da situação cadastral, acesse: <a href="https://servicos.receita.fazenda.gov.br/servicos/cpf/consultasituacao/consultapublica.asp">https://servicos.receita.fazenda.gov.br/servicos/cpf/consultasituacao/consultapublica.asp</a></p>
+                    <p>Para imprimir o comprovante de inscrição no CPF, acesse: <a href="https://servicos.receita.fazenda.gov.br/servicos/cpf/impressaocomprovante/consultaimpressao.asp">https://servicos.receita.fazenda.gov.br/servicos/cpf/impressaocomprovante/consultaimpressao.asp</a></p>
+                </div>
+            </section>
+        </div>
+        
+
+    </div>
+</section>
+<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</body>
+</html>

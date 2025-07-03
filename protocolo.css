@@ -1,0 +1,265 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0 20px;
+    background: #f5f5f5;
+    font-size: 14px;
+}
+
+/* Estilo da barra de navegação */
+.navbar {
+    width: 200px;
+    height: 100vh; /* altura total da tela */
+    background-color: #007bff;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+#atendenteInput {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+}
+
+/* Estilo do botão Baixar PDF */
+#baixarPDF {
+    background-color: #fff;
+    color: #007bff;
+    border: 2px solid #fff;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: left;
+}
+
+#baixarPDF:hover {
+    background-color: #fff;
+    color: #0056b3;
+}
+
+/* Estilo do contêiner principal */
+.container {
+    width: 100%;
+    max-width: 210mm; /* Ajusta para A4 */
+    min-height: 297mm; /* Altura mínima */
+    background: #fff;
+    padding: 40px;
+    margin-left: 220px;
+    box-shadow: 0px 0px 10px #ccc;
+}
+
+
+
+/* Ajustar a área imprimível */
+#protocologeral {
+    width: 100%;
+    max-width: 210mm; /* Largura exata de uma folha A4 */
+    min-height: 297mm; /* Mantém a proporção */
+    padding: 0 20mm 50mm 20mm;
+    box-shadow: none;
+    border: none;
+    margin: auto;
+}
+
+/* Título centralizado */
+.titulo {
+    text-align: center;
+}
+
+.titulo h5{
+    margin: 10px;
+}
+
+/* Seções do protocolo */
+
+.processo, .servico, .dados, .itens, .documentos, .endereco, .assinatura, .rodape {
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #000;
+    font-size: 11px;
+}
+
+.processo input{
+    width: 20rem;
+    border: non;
+    margin-left: 1rem;
+    padding: 5px;
+}
+
+/* Estilo normal na tela */
+input[type="text"] {
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 14px;
+}
+
+/* Estilo para impressão */
+@media print {
+    input[type="text"] {
+        border: none;              /* Remove borda */
+        outline: none;             /* Remove contorno */
+        color: black;              /* Garante texto visível */
+    }
+
+    input[type="text"]::placeholder {
+        color: transparent;        /* Oculta o placeholder */
+    }
+}
+
+.servico div{
+    padding: 10px;
+    margin-right: 10rem;
+}
+
+.servico{
+    display: flex;
+}
+
+.dados div{
+    display: flex;
+}
+
+.dados div label{
+    display: flex;
+    margin: 5px 10px 5px;
+}
+
+span[contenteditable="true"] {
+  padding: 2px 4px;
+  min-width: 100px;
+  display: inline-block;
+  font-size: 11px;
+}
+span[contenteditable="true"]:focus {
+  outline: none;
+  border-color: #007BFF;
+  background-color: #eef6ff;
+}
+
+span[contenteditable="true"] {
+  display: inline-block;
+  white-space: nowrap;         /* força uma única linha */
+  min-width: 50px;             /* largura mínima */
+  max-width: 100%;             /* não ultrapassa o pai */
+  font-size: 11px;
+  padding: 2px 4px;
+  border: none;
+  background-color: transparent;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.itens div{
+    padding: 5px;
+}
+.documentos{
+    display: flex;
+}
+.documentos label{
+    display: inline-block;
+    margin-bottom: 6px;
+    font-size: 11px;
+}
+
+.checkbox{
+    width: 10px;
+    height: 10px;
+}
+
+.endereco label{
+    margin-right: 10%;
+}
+
+.endereco input{
+    font-size: 10px;
+}
+
+
+#campo-cpf-contribuinte{
+    margin-right: 10px;
+    width: 10rem;
+}
+/* Ajuste do tamanho da fonte */
+
+
+.data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.data p {
+    margin: 0 10px;
+}
+
+/* Estilo do cabeçalho */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+/* Estilo das imagens do cabeçalho */
+.logo img {
+    width: 180px;
+}
+
+/* Ajuste das assinaturas */
+.assinatura-box {
+    width: 70%;
+    height: 30px;
+    border-bottom: 1px solid #000;
+    margin: 10px auto;
+}
+
+
+/* Centralização */
+.atendente, .assinatura .nome {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Organização do topo */
+.topo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#cep, #municipio, #uf, #logradouro, #bairro{
+    border: none;
+    outline: none;
+}
+
+#tipoCpf {
+    padding: 0 8px;
+    border-radius: 4px;
+    border: none;
+    width: 100%;
+    max-width: 280px;
+}
