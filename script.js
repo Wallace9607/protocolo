@@ -13,6 +13,19 @@ document.getElementById("baixarPDF").addEventListener("click", () => {
     input.style.outline = "none"; // remove contorno de foco
   });
 
+  // >>> REMOVER CHECKBOXES NÃO SELECIONADOS EM .documentos TEMPORARIAMENTE
+const fieldsetDocumentos = elemento.querySelector("fieldset.documentos");
+const labels = fieldsetDocumentos.querySelectorAll("label");
+
+const labelsRemovidas = [];
+labels.forEach(label => {
+  const checkbox = label.querySelector("input[type='checkbox']");
+  if (checkbox && !checkbox.checked) {
+    labelsRemovidas.push(label); // salva para restaurar depois
+    label.remove(); // remove do DOM
+  }
+});
+
   html2canvas(elemento, {
     scale: 2, // aumenta resolução do canvas
     useCORS: true
@@ -47,6 +60,10 @@ document.getElementById("baixarPDF").addEventListener("click", () => {
       input.placeholder = input.dataset.originalPlaceholder || "";
       input.style.border = "";
       input.style.outline = "";
+    });
+    // >>> RESTAURAR CHECKBOXES REMOVIDOS
+    labelsRemovidas.forEach(label => {
+      fieldsetDocumentos.querySelector(".checkbox-group").appendChild(label);
     });
   });
 });
