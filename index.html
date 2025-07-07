@@ -12,6 +12,7 @@
     <nav>
         <label for="atendenteInput" style="color: white; font-weight: bold;">Nome do Atendente:</label>
         <input type="text" id="atendenteInput" placeholder="Digite o nome" />
+        
         <button id="baixarPDF">Baixar PDF</button>
     </nav>
     </header>
@@ -71,24 +72,61 @@
             </fieldset>
     
             <fieldset class="dados">
-                <legend>Informações do Contribuinte:</legend>
-                <div>
-                    <div id="campo-cpf-contribuinte">
-                        <label><strong>CPF:</strong> <span id="protocolo-cpf" contenteditable="true"></span></label>
-                    </div>
-                    <label><strong>Nome:</strong> <span id="protocolo-nome" contenteditable="true"></span></label>
-                    <label><strong>Nome da Mãe:</strong> <span id="protocolo-mae" contenteditable="true"></span></label>
+            <legend>Informações do Contribuinte:</legend>
+
+            <div>
+                <div id="campo-cpf-contribuinte">
+                <label><strong>CPF:</strong>
+                    <input type="text" id="protocolo-cpf" />
+                </label>
                 </div>
-                <div>
-                    <label><strong>Telefone:</strong> <span id="protocolo-telefone" contenteditable="true"></span></label>
-                    <label><strong>E-mail:</strong> <span id="protocolo-email" contenteditable="true"></span></label>
-                    
-                </div>
-                <div>
-                    <label><strong>CPF do Responsavel:</strong> <span id="protocolo-cpf" contenteditable="true"></span></label>
-                    <label><strong>Nomedo Responsavel:</strong> <span id="protocolo-nome-responsavel" contenteditable="true"></span></label>
-                </div>
-                
+
+                <label><strong>Nome:</strong>
+                <input type="text" id="protocolo-nome" />
+                </label>
+
+                <label><strong>Nome da Mãe:</strong>
+                <input type="text" id="protocolo-mae" />
+                </label>
+            </div>
+
+            <div>
+                <label><strong>Telefone:</strong>
+                <input type="text" id="protocolo-telefone" />
+                </label>
+
+                <label><strong>E-mail:</strong>
+                <input type="email" id="protocolo-email" />
+                </label>
+            </div>
+
+            <div>
+                <label><strong>CPF do Responsável:</strong>
+                <input type="text" id="protocolo-cpf-responsavel" />
+                </label>
+
+                <label><strong>Nome do Responsável:</strong>
+                <input type="text" id="protocolo-nome-responsavel" />
+                </label>
+            </div>
+
+            <script>
+                document.querySelectorAll('.dados input').forEach(input => {
+                function ajustarLargura() {
+                    const espelho = document.createElement('span');
+                    espelho.style.visibility = 'hidden';
+                    espelho.style.whiteSpace = 'pre';
+                    espelho.style.font = window.getComputedStyle(input).font;
+                    espelho.textContent = input.value || '\u200B';
+                    document.body.appendChild(espelho);
+                    input.style.width = espelho.offsetWidth + 5 + 'px';
+                    document.body.removeChild(espelho);
+                }
+
+                ajustarLargura();
+                input.addEventListener('input', ajustarLargura);
+                });
+            </script>
             </fieldset>
             
             <fieldset class="itens">
@@ -119,27 +157,33 @@
             </fieldset>
     
             <fieldset class="endereco">
-                <legend>Endereço:</legend>
+            <legend>Endereço</legend>
+            <div class="linha-endereco">
+                <div>
+                <label for="cep">CEP:<input type="text" id="cep" name="cep"></label>
+                </div>
+                <div>
+                <label for="municipio">Município:<input type="text" id="municipio" name="municipio"></label>
+                </div>
+                <div>
+                <label for="uf">UF:<input type="text" id="uf" name="uf" maxlength="2"></label>
+                </div>
+            </div>
 
-                <label for="cep"><strong>CEP:</strong>
-                    <input type="text" id="cep" maxlength="9" placeholder="Digite o CEP">
-                </label>
-
-                <label for="municipio"><strong>Município:</strong>
-                    <input type="text" id="municipio" placeholder="Município">
-                </label>
-
-                <label for="uf"><strong>UF:</strong>
-                    <input type="text" id="uf" placeholder="UF" maxlength="2">
-                </label>
-
-                <label for="logradouro"><strong>Logradouro:</strong>
-                    <input type="text" id="logradouro" placeholder="Logradouro">
-                </label>
-
-                <label for="bairro"><strong>Bairro:</strong>
-                    <input type="text" id="bairro" placeholder="Bairro">
-                </label>
+            <div class="linha-endereco">
+                <div>
+                <label for="logradouro">Logradouro:<input type="text" id="logradouro" name="logradouro"></label>
+                </div>
+                <div>
+                <label for="complemento">Complemento:<input type="text" id="complemento" name="complemento"></label>
+                </div>
+                <div>
+                <label for="numero">Número:<input type="text" id="numero" name="numero"></label>
+                </div>
+                <div>
+                <label for="bairro">Bairro:<input type="text" id="bairro" name="bairro"></label>
+                </div>
+            </div>
             </fieldset>
     
             <section class="atendente">
@@ -153,8 +197,8 @@
                 <div>
                     <p>Autorizo a solicitação de outros documentos / informações e o envio de resposta desta demanda através do e-mail atendimentorfb.apa.01@rfb.gov.br. Caso seja informado contato telefônico ou de e-mail inválidos, não será possível efetuar o retorno da sua solicitação.</p>
                 </div>
-                <div class="assinatura-box"></div>
-                <p class="nome"><strong><span id="assinatura-nome">Contribuinte ou responsável</span></strong></p>
+                <div id="assinatura-box" class="assinatura-box"></div>
+                <p class="nome"><span id="assinatura-nome">Contribuinte ou responsável</span></p>
             </section>
     
             <section class="rodape">
@@ -166,8 +210,6 @@
                 </div>
             </section>
         </div>
-        
-
     </div>
 </section>
 <script src="script.js"></script>
