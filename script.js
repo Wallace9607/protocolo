@@ -249,8 +249,8 @@ document.getElementById("tipoCpf").addEventListener("change", function () {
   const assinaturaNome = document.getElementById("assinatura-nome");
 
   function atualizarNomeAssinatura() {
-    const nomeResponsavel = spanResponsavel.textContent.trim();
-    const nomeContribuinte = spanNome.textContent.trim();
+    const nomeResponsavel = spanResponsavel.value.trim();
+    const nomeContribuinte = spanNome.value.trim();
 
     if (nomeResponsavel.length > 0) {
       assinaturaNome.textContent = nomeResponsavel;
