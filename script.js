@@ -293,3 +293,4 @@ document.querySelectorAll('span[contenteditable="true"]').forEach(span => {
     document.execCommand('insertText', false, texto);
   });
 });
+
