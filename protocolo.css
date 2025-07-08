@@ -90,7 +90,7 @@ nav {
 }
 .processo input{
     width: 20rem;
-    border: non;
+    border: none;
     margin-left: 1rem;
     padding: 5px;
 }
@@ -102,14 +102,35 @@ input[type="text"] {
 }
 /* Estilo para impressão */
 @media print {
-    input[type="text"] {
-        border: none;              /* Remove borda */
-        outline: none;             /* Remove contorno */
-        color: black;              /* Garante texto visível */
+    body {
+        background: white;
     }
 
-    input[type="text"]::placeholder {
-        color: transparent;        /* Oculta o placeholder */
+    .navbar {
+        display: none !important;
+    }
+
+    .container {
+        margin: 0;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    #protocologeral {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+        border: none;
+        outline: none;
+    }
+
+    span[contenteditable="true"] {
+        border: none;
+        background-color: transparent !important;
     }
 }
 .servico div{
@@ -128,26 +149,21 @@ input[type="text"] {
 }
 span[contenteditable="true"] {
   padding: 2px 4px;
-  min-width: 100px;
-  display: inline-block;
+  min-width: 50px;
+  max-width: 100%;
   font-size: 11px;
-}
-span[contenteditable="true"]:focus {
-  outline: none;
-  border-color: #007BFF;
-  background-color: #eef6ff;
-}
-span[contenteditable="true"] {
   display: inline-block;
-  white-space: nowrap;         /* força uma única linha */
-  min-width: 50px;             /* largura mínima */
-  max-width: 100%;             /* não ultrapassa o pai */
-  font-size: 11px;
-  padding: 2px 4px;
-  border: none;
+  white-space: nowrap;
   background-color: transparent;
+  border: none;
   overflow: hidden;
   vertical-align: bottom;
+}
+
+span[contenteditable="true"]:focus {
+  outline: none;
+  background-color: #eef6ff;
+  border-bottom: 1px dotted #007BFF;
 }
 .itens div{
     padding: 5px;
@@ -276,7 +292,7 @@ header {
 .dados input[type="text"],
 .dados input[type="email"] {
   font-family: inherit;
-  font-size: inherit;
+  font-size: 12px;
   font-weight: inherit;
   border: none;
   outline: none;
@@ -303,4 +319,18 @@ header {
   outline: none;
   background-color: #eef6ff;
   border-bottom: 1px dotted #007BFF;
+}
+@media screen and (max-width: 768px) {
+  .navbar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .container {
+    margin-left: 0;
+    padding: 20px;
+  }
 }
