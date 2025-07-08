@@ -114,6 +114,7 @@ document.getElementById("atendenteInput").addEventListener("input", function () 
     document.getElementById("nomeAtendenteExibido").textContent = nome;
 });
 
+
 const configuracoesProtocolo = {
   "maior-16": {
     documentos: [
@@ -284,13 +285,11 @@ document.getElementById("tipoCpf").addEventListener("change", function () {
 
 // Aplica ao carregar e ao editar
 document.querySelectorAll('span[contenteditable="true"]').forEach(span => {
-  ajustarLarguraSpan(span);
+  // ... já faz ajuste de largura
 
-  span.addEventListener('input', () => ajustarLarguraSpan(span));
-});
-
-span.addEventListener('paste', e => {
-  e.preventDefault();
-  const texto = (e.clipboardData || window.clipboardData).getData('text').replace(/\n/g, ' ');
-  document.execCommand('insertText', false, texto);
+  span.addEventListener('paste', e => {
+    e.preventDefault();
+    const texto = (e.clipboardData || window.clipboardData).getData('text').replace(/\n/g, ' ');
+    document.execCommand('insertText', false, texto);
+  });
 });
